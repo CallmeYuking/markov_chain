@@ -11,9 +11,9 @@ def open_and_read_file(file_path):
     """
 
     # your code goes here
-    text_string = open(file_path)
+    new_text_string = open(file_path)
 
-    return text_string.read()
+    return new_text_string.read()
 
 
 def make_chains(text_string):
@@ -40,8 +40,18 @@ def make_chains(text_string):
         >>> chains[('there','juanita')]
         [None]
     """
-
+    words = text_string.split()
+    
     chains = {}
+    for i in range(len(words)-2):
+        bigram = (words[i], words[i+1])
+        
+        chains[bigram] = chains.get(bigram, [words[i+2]])
+        chains[bigram].append(words[i+2])
+       # words[i+2]
+
+
+    print(chains)
 
     # your code goes here
 
@@ -69,5 +79,5 @@ chains = make_chains(input_text)
 # Produce random text
 random_text = make_text(chains)
 
-print(input_text)
+print(chains)
 
