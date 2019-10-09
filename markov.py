@@ -70,16 +70,16 @@ def make_text(chains):
     next_key = choice(key_list)
     words.extend(next_key)
     
-    while next_key != ('I', 'am?'):
+    while chains[next_key] != []:
     # for pair in key_list:
         words.append(choice(chains[(next_key)]))
         next_key = tuple(words[-2:])
-        print(next_key)
+     #   print(next_key)
 
   #  words.append(choice(chains[(next_key)]))
   #  next_key = tuple(words[-2:])
 
-    print(words)
+  #  print(words)
    # print(third_key)
 
 
@@ -90,16 +90,16 @@ def make_text(chains):
     
 
 
-input_path = "green-eggs.txt"
+input_path = "gettysburg.txt"
 
 # Open the file and turn it into one long string
-input_text = open_and_read_file("green-eggs.txt")
+input_text = open_and_read_file(input_path)
 
 # Get a Markov chain
 chains = make_chains(input_text)
 
 # Produce random text
-#random_text = make_text(chains)
+random_text = make_text(chains)
 
-print(chains)
+print(random_text)
 
