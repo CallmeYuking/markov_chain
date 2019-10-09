@@ -43,11 +43,13 @@ def make_chains(text_string):
     words = text_string.split()
     
     chains = {}
-    for i in range(len(words)-2):
+    for i in range(len(words)-1):
         bigram = (words[i], words[i+1])
         
-        chains[bigram] = chains.get(bigram, [words[i+2]])
-        chains[bigram].append(words[i+2])
+        chains[bigram] = chains.get(bigram, [])
+
+        if i < (len(words)-2):
+            chains[bigram].append(words[i+2])
        # words[i+2]
 
 
@@ -96,7 +98,7 @@ input_text = open_and_read_file("green-eggs.txt")
 chains = make_chains(input_text)
 
 # Produce random text
-random_text = make_text(chains)
+#random_text = make_text(chains)
 
-print(random_text)
+print(chains)
 
