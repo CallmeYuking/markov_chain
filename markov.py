@@ -16,7 +16,7 @@ def open_and_read_file(file_path):
     return new_text_string.read()
 
 
-def make_chains(text_string):
+def make_chains(text_string, n):
     """Take input text as string; return dictionary of Markov chains.
 
     A chain will be a key that consists of a tuple of (word1, word2)
@@ -43,15 +43,15 @@ def make_chains(text_string):
     words = text_string.split()
     
     chains = {}
-    for i in range(len(words)-1):
-        bigram = (words[i], words[i+1])
+    # for i in range(len(words)-2):
+    #     ngram = (words[i], words[i+1], words[i+2])
         
-        chains[bigram] = chains.get(bigram, [])
+    #     chains[ngram] = chains.get(ngram, [])
 
-        if i < (len(words)-2):
-            chains[bigram].append(words[i+2])
+    #     if i < (len(words)-3):
+    #         chains[ngram].append(words[i+3])
        # words[i+2]
-
+    for i in range(len(words)-(n-1)):
 
  #   print(chains)
 
@@ -73,7 +73,7 @@ def make_text(chains):
     while chains[next_key] != [] and len(words) < 200:
     # for pair in key_list:
         words.append(choice(chains[(next_key)]))
-        next_key = tuple(words[-2:])
+        next_key = tuple(words[-3:])
      #   print(next_key)
 
   #  words.append(choice(chains[(next_key)]))
