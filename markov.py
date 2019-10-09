@@ -51,7 +51,7 @@ def make_chains(text_string):
        # words[i+2]
 
 
-    print(chains)
+ #   print(chains)
 
     # your code goes here
 
@@ -63,9 +63,28 @@ def make_text(chains):
 
     words = []
 
+    key_list = sorted(chains.keys())
+
+    next_key = choice(key_list)
+    words.extend(next_key)
+    
+    for pair in key_list:
+        words.append(choice(chains[(next_key)]))
+        next_key = tuple(words[-2:])
+        print(next_key)
+
+  #  words.append(choice(chains[(next_key)]))
+  #  next_key = tuple(words[-2:])
+
+    print(words)
+   # print(third_key)
+
+
     # your code goes here
 
     return " ".join(words)
+
+    
 
 
 input_path = "green-eggs.txt"
@@ -79,5 +98,5 @@ chains = make_chains(input_text)
 # Produce random text
 random_text = make_text(chains)
 
-print(chains)
+print(random_text)
 
