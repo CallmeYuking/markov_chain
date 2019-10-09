@@ -70,7 +70,8 @@ def make_text(chains):
     next_key = choice(key_list)
     words.extend(next_key)
     
-    for pair in key_list:
+    while next_key != ('I', 'am?'):
+    # for pair in key_list:
         words.append(choice(chains[(next_key)]))
         next_key = tuple(words[-2:])
         print(next_key)
